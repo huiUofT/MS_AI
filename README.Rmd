@@ -21,7 +21,7 @@ requriements:
   rm(list=ls())
   library(xcms)
   library(devtools)
-  library(Nontarget)
+  library(MSAI)
   library(xlsx)
   library(ChemmineR)
   library(rcdk)
