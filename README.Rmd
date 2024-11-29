@@ -1,0 +1,48 @@
+---
+title: "MS_AI"
+author: "Hui Peng"
+date: '2024-11-29'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+This package is used to prepare MS data for machine learning models:
+requriements:
+1. MS1 peak lists in the folder of 'peaklist'
+2. Raw MS2 DIA data in the folder of 'data'
+3. results folder to save results
+4. the name of peak list documents should be matched to raw MS data
+
+```{r, message=FALSE, warning=FALSE}
+  rm(list=ls())
+  library(xcms)
+  library(devtools)
+  library(Nontarget)
+  library(xlsx)
+  library(ChemmineR)
+  library(rcdk)
+  library(MassSpecWavelet)
+  library(Rcpp)
+  library(RcppArmadillo)
+  library(isopat)
+  library(readxl)
+  data(iso_list)
+  #'set up the path
+  path<-"C:/Rprogram/ChiralNTA/MS_AI"
+  DIAisowin<-13.5 ##window of DIa
+  mz_tol<-3*10^(-6) ##MS tolerance
+  RTwin<-30 #retention time window
+  setwd(path)
+```
+
+Extracting MS2
+
+```{r pressure, echo=FALSE}
+
+myms2<-GetFrag(mz_tol,DIAisowin,RTwin)
+```
+
